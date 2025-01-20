@@ -46,11 +46,26 @@
         text-align: center;
       }
 
+      .world {
+        display: flex;
+        justify-content: start;
+      }
+
       .cow {
         cursor: pointer;
-        transition-duration: 1s;
+        user-select: none;
+        transition-duration: 500ms;
         max-width: 100%;
         height: auto;
+        position: relative;
+        z-index: 1;
+      }
+
+      .guy {
+        user-select: none;
+        cursor: pointer;
+        transform: translateY(-150px);
+        transition-duration: 500ms;
       }
 
       .progress {
@@ -58,33 +73,33 @@
         height: 4px;
         border-radius: 2px;
         background-color: #d4be98;
-        transition-duration: 1s;
+        transition-duration: 500ms;
       }
     </style>
 
     <script>
       document.addEventListener("DOMContentLoaded", () => {
-        const cow = document.getElementsByClassName("cow")[0];
+        const guy = document.getElementsByClassName("guy")[0];
         const progress = document.getElementsByClassName("progress")[0];
-        if (!cow || !progress) {
-          console.error("Unable to find cow or progress element");
+        if (!guy || !progress) {
+          console.error("Unable to find guy or progress element");
         } else {
           function startBreathing() {
-            cow.style.transform = "rotate(-20deg)";
+            guy.style.transform = "translateX(50px) translateY(-150px)";
             progress.style.width = "100%";
           }
 
           function stopBreathing() {
-            cow.style.transform = "rotate(0deg)";
+            guy.style.transform = "translateX(0) translateY(-150px)";
             progress.style.width = "0";
           }
 
-          cow.addEventListener("mousedown", startBreathing);
-          cow.addEventListener("mouseup", stopBreathing);
-          cow.addEventListener("mouseleave", stopBreathing);
-          cow.addEventListener("touchstart", startBreathing);
-          cow.addEventListener("touchend", stopBreathing);
-          cow.addEventListener("touchcancel", stopBreathing);
+          guy.addEventListener("mousedown", startBreathing);
+          guy.addEventListener("mouseup", stopBreathing);
+          guy.addEventListener("mouseleave", stopBreathing);
+          guy.addEventListener("touchstart", startBreathing);
+          guy.addEventListener("touchend", stopBreathing);
+          guy.addEventListener("touchcancel", stopBreathing);
           document.addEventListener("keydown", startBreathing);
           document.addEventListener("keyup", stopBreathing);
         }
@@ -94,16 +109,20 @@
   <body>
     <div class="container">
       <header>
-        <h1>🐄 Cow Breathing Solutions 2.0™️</h1>
+        <h1>🐄 Cow Breeding Solutions 2.0™️</h1>
       </header>
       <main>
-        <img
-          src="cow.png"
-          class="cow"
-          draggable="false"
-          alt="Cow"
-          width="500"
-        />
+        <div>
+          <img src="guy.png" class="guy" draggable="false" alt="Guy" />
+          <img
+            src="cow.png"
+            class="cow"
+            draggable="false"
+            alt="Cow"
+            width="500"
+          />
+        </div>
+
         <div class="progress"></div>
       </main>
       <footer>
