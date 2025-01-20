@@ -85,6 +85,8 @@
           cow.addEventListener("touchstart", startBreathing);
           cow.addEventListener("touchend", stopBreathing);
           cow.addEventListener("touchcancel", stopBreathing);
+          document.addEventListener("keydown", startBreathing);
+          document.addEventListener("keyup", stopBreathing);
         }
       });
     </script>
