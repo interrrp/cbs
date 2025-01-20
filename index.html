@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>🐄 Cow Breathing Solutions 2.0™️</title>
+
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      body {
+        font-family: Papyrus, system-ui, -apple-system, BlinkMacSystemFont,
+          "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Open Sans",
+          "Helvetica Neue", sans-serif;
+
+        background-color: #1d2021;
+        color: #d4be98;
+
+        overflow-x: hidden;
+      }
+
+      .container {
+        width: 100vw;
+        height: 100vh;
+
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        gap: 5rem;
+        padding: 1rem;
+      }
+
+      main {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 2rem;
+      }
+
+      header {
+        text-align: center;
+      }
+
+      .cow {
+        cursor: pointer;
+        transition-duration: 1s;
+        max-width: 100%;
+        height: auto;
+      }
+
+      .progress {
+        width: 0px;
+        height: 4px;
+        border-radius: 2px;
+        background-color: #d4be98;
+        transition-duration: 1s;
+      }
+    </style>
+
+    <script>
+      document.addEventListener("DOMContentLoaded", () => {
+        const cow = document.getElementsByClassName("cow")[0];
+        const progress = document.getElementsByClassName("progress")[0];
+        if (!cow || !progress) {
+          console.error("Unable to find cow or progress element");
+        } else {
+          function startBreathing() {
+            cow.style.transform = "rotate(-20deg)";
+            progress.style.width = "50vw";
+          }
+
+          function stopBreathing() {
+            cow.style.transform = "rotate(0deg)";
+            progress.style.width = "0";
+          }
+
+          cow.addEventListener("mousedown", startBreathing);
+          cow.addEventListener("mouseup", stopBreathing);
+          cow.addEventListener("mouseleave", stopBreathing);
+          cow.addEventListener("touchstart", startBreathing);
+          cow.addEventListener("touchend", stopBreathing);
+          cow.addEventListener("touchcancel", stopBreathing);
+        }
+      });
+    </script>
+  </head>
+  <body>
+    <div class="container">
+      <header>
+        <h1>🐄 Cow Breathing Solutions 2.0™️</h1>
+      </header>
+      <main>
+        <img
+          src="cow.png"
+          class="cow"
+          draggable="false"
+          alt="Cow"
+          width="500"
+        />
+        <div class="progress"></div>
+      </main>
+      <footer>
+        <p>- int, sqd, ducc</p>
+      </footer>
+    </div>
+  </body>
+</html>
